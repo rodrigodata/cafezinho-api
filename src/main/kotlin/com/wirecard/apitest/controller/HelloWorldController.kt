@@ -15,13 +15,18 @@ class HelloWorldController {
     @Autowired
     lateinit var processadorNumeroService: ProcessadorNumeroInterface
 
+    data class Processamento(val numeroProcessado: Int)
+    data class QueroCafe(val resposta: String)
+
     @GetMapping("/cafe")
-    fun queroCafe(@RequestParam(value = "acucar", defaultValue = "sim") acucar: String) = "Resposta: $acucar"
+    fun queroCafe(@RequestParam(value = "acucar", defaultValue = "sim") acucar: String): QueroCafe {
+        return QueroCafe("$acucar")
+    }
 
 
     @GetMapping("/processamento")
-    fun processamento(@RequestParam(value = "numero") numero: Int): Int {
-       return processadorNumeroService.processarNumero(numero)
+    fun processamento(@RequestParam(value = "numero") numero: Int): Processamento {
+       return Processamento(processadorNumeroService.processarNumero(numero))
     }
 
 }
