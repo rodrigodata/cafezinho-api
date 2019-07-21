@@ -39,7 +39,8 @@ workflows:
     jobs:
       - build:
           context: org-global
-      filters:
-        branches:
-          only:
-            - integration
+          filters:
+            branches:
+              only:
+                - master
+                - integration
