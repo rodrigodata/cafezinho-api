@@ -18,9 +18,6 @@ jobs:
     steps:
       - checkout
       # Download and cache dependencies
-      - attach_workspace:
-          - at: ~/cafezinho-api
-
       - restore_cache:
           keys:
             - cafezinho-api-{{ checksum "pom.xml" }}
