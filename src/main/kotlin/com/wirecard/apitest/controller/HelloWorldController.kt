@@ -18,13 +18,13 @@ class HelloWorldController {
     data class Processamento(val numeroProcessado: Int)
     data class QueroCafe(val resposta: String)
 
-    @GetMapping("/cafe")
+    @GetMapping("/coffee")
     fun queroCafe(@RequestParam(value = "acucar", defaultValue = "sim") acucar: String): QueroCafe {
         return QueroCafe("$acucar")
     }
 
 
-    @GetMapping("/processamento")
+    @GetMapping("/processing")
     fun processamento(@RequestParam(value = "numero") numero: Int): Processamento {
        return Processamento(processadorNumeroService.processarNumero(numero))
     }
